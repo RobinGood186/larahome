@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./_docker/nginx/:/etc/nginx/conf.d/
+      - ./:/var/www/
+      - /etc/letsencrypt/:/etc/letsencrypt/
+    ports:
+      - "8000:80" 
+    depends_on:
+      - app
+    container_name: nginx
+    links: 
+      - app
+
+      
+  app:
+    build: 
+      context: .
+      dockerfile: _docker/app/Dockerfile 
+    volumes:
+      - ./:/var/www/
+    container_name: app
+    command: /bin/bash -c "php artisan migrate --force && php-fpm"
+    links: 
+      - db
+
+  db:
+    image: postgres:15
+    volumes:
+      - ./tmp/db:/var/lib/postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=robin
+      - POSTGRES_PASSWORD=root
+    
