@@ -37,4 +37,5 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_DB=robin
       - POSTGRES_PASSWORD=root
+    container_name: db
     
