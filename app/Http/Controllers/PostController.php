@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PostController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = [1,2,3];
+        $posts = User::query()->get(['id','email']);
+     
         return view('posts.index', compact('posts'));
+   
     }
 
     public function create()
@@ -21,7 +24,8 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        //
+
+   
     }
 
     public function show(string $id)

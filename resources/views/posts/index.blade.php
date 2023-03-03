@@ -15,8 +15,8 @@
     @else 
         @foreach ($posts as $post)
 
-            <div>
-                {{ $post }}
+            <div><br>
+                {{ $post->id}} {{$post->email}}
             </div>
             
         @endforeach

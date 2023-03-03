@@ -21,6 +21,7 @@
 
                         <div class="card-body">
                             <form action="{{ route('login.store')}}" method="POST">
+                                @csrf
                                 <div class="mb-3">
                                     <label>{{ __('Email') }} </label>
                                     <input type="email" name="email" class="form-control" autofocus>

@@ -17,10 +17,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('posts.index') }}" class="nav-link" aria-current="page">
+                    <a href="{{ route('posts.store') }}" class="nav-link" aria-current="page">
                         {{ __('posts') }}
                     </a>
                 </li>
+                
             </ul>
 
             <ul class="navbar-nav ms-auto mb-2 mb-md-0">
@@ -35,6 +36,16 @@
                         {{ __('Вход') }}
                     </a>
                 </li>
+
+
+                    <li class="nav-item">
+                        <a href="{{ route('logout.store') }}" class="nav-link active" aria-current="page">
+
+
+                        {{ __('выйти')}}
+                      </a>
+                    </li>
+
             </ul>
         </div>
     </div>
