@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <h4 class="m-0">
 
-                            {{ __('Вход')}}
+                            {{ __('Регистрация')}}
 
                         </h4>
                     </div>
@@ -24,12 +24,16 @@
                             @csrf
                             <div class="mb-3">
                                 <label>{{ __('имя') }} </label>
-                                <input type=" name" name="name" class="form-control">
+                                <input type=" name" name="name" class="form-control
+                                {{ $errors->has('name') ? ' is-invalid' : ''}}"
+                                value="{{ Request::old('name') ?: ''}}">
 
                             </div>
                             <div class="mb-3">
                                 <label>{{ __('Email') }} </label>
-                                <input type="email" name="email" class="form-control">
+                                <input type="email" name="email" class="form-control 
+                                {{ $errors->has('email') ? ' is-invalid' : ''}}"
+                                value="{{ Request::old('email') ?: ''}}">
 
                             </div>
 
@@ -38,12 +42,14 @@
 
                             <div class="mb-3">
                                 <label>{{ __('Password') }} </label>
-                                <input type="password" name="password" class="form-control" >
+                                <input type="password" name="password" class="form-control
+                                {{ $errors->has('email') ? ' is-invalid' : ''}}" >
 
                             </div>
                             <div class="mb-3">
                                 <label>{{ __('Password еще раз') }} </label>
-                                <input type="password" name="password" class="form-control" >
+                                <input type="password" name="password" class="form-control
+                                {{ $errors->has('email') ? ' is-invalid' : ''}}" >
 
                             </div>
                             <div class="mb-3">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\Login\StoreRequest;
 
 class LoginController extends Controller
 {
@@ -18,17 +19,16 @@ class LoginController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-       $credentials = $request->validate([
-           'email' => ['required', 'email'],
-           'password' => ['required'],
-       ]);
+       $login = $request->validated();
 
-       if (Auth::attempt($credentials)) {
+       if (!Auth::attempt($request->only(['email', 'password']), $request->has('remember') ))
+
+       if (Auth::attempt($login)) {
            $request->session()->regenerate();
 
-           return redirect()->intended('posts');
+           return redirect()->intended('home');
        }
 
        return back()->withErrors([
