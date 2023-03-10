@@ -24,6 +24,7 @@ class StoreRequest extends FormRequest
         return [
             'name' => ['string','min:3','max:10'],
             'text' => ['string','min:10','max:300'],
+            'image' => ['image'],
         ];
     }
 }

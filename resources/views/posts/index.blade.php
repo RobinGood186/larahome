@@ -13,22 +13,26 @@
                    
     <h1>
         Посты
+        <a href="{{ route('posts.create')}}" type="" class="btn btn-primary">
+            {{ __('+')}}
+        </a>
     </h1>   
-
-
-
-
     @if(empty($posts))
 
     no posts
 @else 
     @foreach ($posts as $post)
 
-        <div>
+
+    <div class="card">
+    <div class="card-body">
             <a href="{{ route('posts.show', $post->id)}}">
-                {{ $post->name}}  {{ $post->text}} {{ $post->user_id}} 
+                {{ $post->name}}  {{ $post->text}} {{ $post->user_id}}  {{ $post->image}}
             </a>
-        </div>
+                <img src="{{ asset('storage/'.$post->image)}}"> 
+ 
+    </div>
+    </div>
         
     @endforeach
     

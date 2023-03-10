@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Post\StoreRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -12,9 +13,12 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $posts = Post::all();
-     
+      
+
+
         return view('posts.index', compact('posts'));
-   
+
+
     }
 
     public function create()
@@ -24,13 +28,21 @@ class PostController extends Controller
 
 
     public function store(StoreRequest $request)
-    {   $validated = $request->validated();
+    {   
+        $validated = $request->validated();
 
+        
+        
+        $validated['image'] = Storage::disk('public')->put('/',$validated['image']);
+       
+        
         $post = Post::query()->create([
             'name' => $validated['name'],
             'text' => $validated['text'],
             'user_id' => Auth()->user()->id,
+            'image' => $validated['image'],
         ]);
+    
         $post->save();
         return redirect()->route('posts.index');
 
