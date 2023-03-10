@@ -1,9 +1,10 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+
+
+
+
+
+<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light navbar-dark bg-dark">
     <div class="container">
-
-
-
-
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
@@ -25,10 +26,6 @@
                     </li>
                 @endcan
             </ul>
-
-    
-
-
             <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                 @if (Auth::guest())
                     

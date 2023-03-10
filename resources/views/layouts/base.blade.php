@@ -14,9 +14,12 @@
     <div class="d-flex flex-column justify-content-between min-vh-100">
         @include('includes.header')
 
+
+        <div class="m-5">
         <main class="flex-grow-1 py-3">
             @yield('content')
         </main>
+        </div>
 
 
         @include('includes.footer')
